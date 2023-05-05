@@ -68,4 +68,15 @@ async function dalle(username:string,prompt: string) {
  * @param username
  * @param videoPath
  */
-export {chatgpt,dalle};
+async function whisper(username:string,videoPath: string): Promise<string> {
+  const file:any= fs.createReadStream(videoPath);
+  const response = await openai.createTranscription(file,"whisper-1")
+    .then((res) => res.data).catch((err) => console.log(err));
+  if (response) {
+    return response.text;
+  }else{
+    return "Speech to text failed"
+  }
+}
+
+export {chatgpt,dalle,whisper};
