@@ -79,4 +79,4 @@ async function whisper(username:string,videoPath: string): Promise<string> {
   }
 }
 
-export {chatgpt,dalle,whisper};
+export {chatgpt,dalle};
